@@ -33,21 +33,26 @@
 import signal, sys
 from SimpleWebSocketServer import WebSocket, SimpleWebSocketServer
  
-PORTNUM = 8002
+PORTNUM = 8003
+ 
+def shootData(self):
+    print("shooting data")
+    // to add loop
+    self.sendMessage("Yes")
  
 # Websocket class to echo received data
 class Echo(WebSocket):
- 
+
     def handleMessage(self):
         print("Echoing '%s'" % self.data)
-        self.sendMessage(self.data)
+        shootData(self)
  
     def handleConnected(self):
         print("Connected")
  
     def handleClose(self):
         print("Disconnected")
- 
+
 # Handle ctrl-C: close server
 def close_server(signal, frame):
     server.close()
