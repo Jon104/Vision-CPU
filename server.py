@@ -30,22 +30,46 @@
 30
 # Websocket demo, from iosoft.blog
  
-import signal, sys
+import signal, sys, struct
 from SimpleWebSocketServer import WebSocket, SimpleWebSocketServer
+import numpy as np
+from array import array
+import json
  
+
 PORTNUM = 8003
- 
-def shootData(self):
-    print("shooting data")
-    // to add loop
-    self.sendMessage("Yes")
+rList = [1, 2, 3, 4]
+
+data = [
+  -0.99,0,
+  -0.98,0,
+  -0.97,0,
+  -0.851,0,
+  -0.85,0,
+  -0.849,0,
+  -0.76,0,
+  -0.75,0,
+  -0.749,0,
+  -0.747,0,
+  -0.746,0.5,
+  -0.745,0,
+  0.5,0,
+  0.73,0,
+  0.75,0,
+  0.749,0,
+  0.741,0,
+  0.74,0.5,
+  0.749,0.8,
+  0.9,0,
+  1.0,0,
+];
  
 # Websocket class to echo received data
 class Echo(WebSocket):
 
     def handleMessage(self):
-        print("Echoing '%s'" % self.data)
-        shootData(self)
+        yop = json.dumps({"a": data})
+        self.sendMessage(yop.encode())
  
     def handleConnected(self):
         print("Connected")
