@@ -379,7 +379,7 @@ def close_server(signal, frame):
 if __name__ == "__main__":
     print("Websocket server on port %s" % PORTNUM)
 
-    server = SimpleWebSocketServer('192.168.1.23', PORTNUM, Echo)
+    server = SimpleWebSocketServer('0.0.0.0', PORTNUM, Echo)
     print(server)
     signal.signal(signal.SIGINT, close_server)
     server.serveforever()
